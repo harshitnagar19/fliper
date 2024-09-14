@@ -11,7 +11,7 @@ function App() {
       <Navbar/>
       <Carosal/>
       <Cards/>
-      <Helpinghand/>
+      
     </div>
   );
 }
