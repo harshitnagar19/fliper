@@ -3,7 +3,7 @@ import {CNavbar ,CContainer,CNavbarBrand,CNavbarToggler,CCollapse,CNavbarNav,CNa
 import '@coreui/coreui/dist/css/coreui.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import logo from "../../assest/Next Invest - Landing Page (images)/logo.svg"
+import logo from "../../assest/landingImages/logo.svg"
 const Navbar = () => {
     const [visible, setVisible] = useState(false)
     return (

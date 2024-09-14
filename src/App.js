@@ -3,11 +3,13 @@ import React from "react";
 import "./output.css"
 import Navbar from "./components/navbar/Navbar";
 import Carosal from "./components/carosal/Carosal";
+import { Helpinghand } from "./components/helpiinghand/Helpinghand";
 function App() {
   return (
     <div>
       <Navbar/>
       <Carosal/>
+      <Helpinghand/>
     </div>
   );
 }
