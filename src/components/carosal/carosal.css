@@ -1,0 +1,5 @@
+.landing{
+    background: url("../../assest/landingImages/landing.svg");
+    background-size:cover;
+    /* background-repeat: no-repeat; */
+}
