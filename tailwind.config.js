@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         'custom-green': '#128b76', 
-        'custom-pink': '#F973A1' 
+        'custom-pink': '#F973A1', 
+        'custom-light-blue': '#ecf4fd' 
         // Add more colors as needed
       },
     },
