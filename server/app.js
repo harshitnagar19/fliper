@@ -16,6 +16,10 @@ app.use("/suscribe",SuscribeRoute)
 const LoginRoute = require("./routes/LoginRoute")
 app.use("/login",LoginRoute)
 
+const cardRoute = require("./routes/cardRoute")
+app.use("/card",cardRoute)
+
+
 app.listen(9999, ()=>{
     console.log("server is running on port : ", 9999)
   }); 

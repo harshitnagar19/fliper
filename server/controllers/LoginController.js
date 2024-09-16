@@ -11,6 +11,7 @@ LoginController.login = async (req, res) => {
         try {
             var passwordCheck = await bcrypt.compareSync(password, foundedUser.password);
             if(passwordCheck){    
+                console.log(foundedUser._id)
                 let token = await jwt.sign({ _id: foundedUser._id }, SECRET_KEY);
                 let deepcopy = JSON.parse(JSON.stringify(foundedUser))
                 delete deepcopy["password"]

@@ -4,19 +4,24 @@ import '@coreui/coreui/dist/css/coreui.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assest/landingImages/logo.svg"
-const Navbar = () => {
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+const DashboardNavbar = () => {
     const [visible, setVisible] = useState(false)
     const [auth , setAuth] = useState(false)
     var navigate = useNavigate();
+    const notifyE = (mes) => toast.error(mes);
+    const notifyS = (mes) => toast(mes);
 
      useEffect(()=>{
       var authorization = localStorage.getItem("authorization")
       if(authorization) setAuth(true)
       else setAuth(false)
      },[auth])
-    return (
-      <>
-        <CNavbar expand="lg" className="">
+
+  return (
+    <div>
+      <CNavbar expand="lg" className="">
           <CContainer style={{marginLeft: "13%"}}>
             <CNavbarBrand className='' href=""><img src={logo} alt="" /></CNavbarBrand>
             <CNavbarToggler
@@ -26,29 +31,23 @@ const Navbar = () => {
             />
             <CCollapse className="navbar-collapse justify-center" visible={visible}>
               <CNavbarNav>
-                <CDropdown variant="nav-item" popper={false} className='flex items-center font-bold'>
-                  <CDropdownToggle >Investment Opportunities</CDropdownToggle>
-                  <CDropdownMenu>
-                    <CDropdownItem className='cursor-pointer'>Action</CDropdownItem>
-                    <CDropdownItem className='cursor-pointer'>Another action</CDropdownItem>
-                    <CDropdownDivider />
-                    <CDropdownItem className='cursor-pointer'>Something else here</CDropdownItem>
-                  </CDropdownMenu>
-                </CDropdown>
-                <CDropdown variant="nav-item" popper={false} className='flex items-center font-bold'>
-                  <CDropdownToggle>How It Works</CDropdownToggle>
-                  <CDropdownMenu>
-                    <CDropdownItem className='cursor-pointer'>Action</CDropdownItem>
-                    <CDropdownItem className='cursor-pointer'>Another action</CDropdownItem>
-                    <CDropdownDivider />
-                    <CDropdownItem className='cursor-pointer'>Something else here</CDropdownItem>
-                  </CDropdownMenu>
-                </CDropdown>
                 <CNavItem className='flex items-center font-bold'>
-                  <CNavLink className='cursor-pointer'>About Us</CNavLink>
+                  <CNavLink
+                  className='cursor-pointer'
+                  onClick={()=>{
+                    navigate("/")
+                  }}
+                  >Home</CNavLink>
                 </CNavItem>
-                <CNavItem className={`flex items-center font-bold ${auth?"block":"hidden"}`}>
-                  <CNavLink ><Link className='text-slate-600  no-underline ' to={"/dashboard"}>DashBoard</Link></CNavLink>
+                <CNavItem className='flex items-center font-bold'>
+                  <CNavLink
+                  className='cursor-pointer'
+                  >See All Subscribe</CNavLink>
+                </CNavItem>
+                <CNavItem className='flex items-center font-bold'>
+                  <CNavLink 
+                  className='cursor-pointer'
+                  >About Us</CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink to='/login' ><button className='bg-custom-green px-4 py-2 font-bold text-white'
@@ -63,7 +62,7 @@ const Navbar = () => {
                   >{auth?"LOGOUT":"LOGIN"}</button></CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink className='cursor-pointer' ><button className='border-solid border-2 border-custom-pink px-4 py-2 font-bold text-custom-pink'
+                  <CNavLink href="" ><button className='border-solid border-2 border-custom-pink px-4 py-2 font-bold text-custom-pink'
                    onClick={()=>{
                     navigate("/register")
                   }}
@@ -73,8 +72,8 @@ const Navbar = () => {
             </CCollapse>
           </CContainer>
         </CNavbar>
-      </>
-    )
+    </div>
+  )
 }
 
-export default Navbar
+export default DashboardNavbar

@@ -1,6 +1,7 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import { Helpinghand } from '../helpiinghand/Helpinghand'
 import card1 from "../../assest/landingImages/card1.svg"
+
 
 const Cards = () => {
     let arr = [
@@ -11,6 +12,10 @@ const Cards = () => {
         {src:"card5.svg"},
         {src:"card6.svg"},
     ]
+
+    useEffect(()=>{
+
+    },[])
     return (
         <div className='my-16'>
             <div className='text-center'>
