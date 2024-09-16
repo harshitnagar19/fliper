@@ -21,6 +21,7 @@
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.2",
     "react": "^18.3.1",
+    "react-awesome-reveal": "^4.2.14",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
