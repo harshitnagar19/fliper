@@ -2,11 +2,13 @@ import React from 'react';
 import './carosal.css';
 import Circle from '../../assest/landingImages/circle.svg';
 import line from '../../assest/landingImages/lines.svg';
+import { Element } from 'react-scroll';
 // https://uiverse.io/Uncannypotato69/ancient-hound-67
 // https://uiverse.io/Satwinder04/young-zebra-44
 const Carosal = () => {
     return (
-        <div className='landing flex'>
+        <Element name='home'>
+            <div className='landing flex'>
             <div className='relative flex mt-[4%] left-[12%] mb-[12%]'>
                 <div className=''>
                     <img src={Circle} alt="" className='opacity-90' />
@@ -22,6 +24,7 @@ const Carosal = () => {
             </div>
             <div className="self-end "><img src={line} alt="" className="" /></div>
         </div>
+        </Element>
     );
 }
 

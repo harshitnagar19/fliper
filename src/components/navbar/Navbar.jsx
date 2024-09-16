@@ -1,16 +1,24 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
 import {CNavbar ,CContainer,CNavbarBrand,CNavbarToggler,CCollapse,CNavbarNav,CNavItem,CNavLink,CDropdown,CDropdownMenu,CDropdownItem,CDropdownDivider,CDropdownToggle} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assest/landingImages/logo.svg"
 const Navbar = () => {
     const [visible, setVisible] = useState(false)
+    const [auth , setAuth] = useState(false)
+    var navigate = useNavigate();
+
+     useEffect(()=>{
+      var authorization = localStorage.getItem("authorization")
+      if(authorization) setAuth(true)
+      else setAuth(false)
+     },[auth])
     return (
       <>
         <CNavbar expand="lg" className="">
           <CContainer style={{marginLeft: "13%"}}>
-            <CNavbarBrand className='' href="#"><img src={logo} alt="" /></CNavbarBrand>
+            <CNavbarBrand className='' href=""><img src={logo} alt="" /></CNavbarBrand>
             <CNavbarToggler
               aria-label="Toggle navigation"
               aria-expanded={visible}
@@ -21,29 +29,45 @@ const Navbar = () => {
                 <CDropdown variant="nav-item" popper={false} className='flex items-center font-bold'>
                   <CDropdownToggle >Investment Opportunities</CDropdownToggle>
                   <CDropdownMenu>
-                    <CDropdownItem href="#">Action</CDropdownItem>
-                    <CDropdownItem href="#">Another action</CDropdownItem>
+                    <CDropdownItem href="">Action</CDropdownItem>
+                    <CDropdownItem href="">Another action</CDropdownItem>
                     <CDropdownDivider />
-                    <CDropdownItem href="#">Something else here</CDropdownItem>
+                    <CDropdownItem href="">Something else here</CDropdownItem>
                   </CDropdownMenu>
                 </CDropdown>
                 <CDropdown variant="nav-item" popper={false} className='flex items-center font-bold'>
                   <CDropdownToggle>How It Works</CDropdownToggle>
                   <CDropdownMenu>
-                    <CDropdownItem href="#">Action</CDropdownItem>
-                    <CDropdownItem href="#">Another action</CDropdownItem>
+                    <CDropdownItem href="">Action</CDropdownItem>
+                    <CDropdownItem href="">Another action</CDropdownItem>
                     <CDropdownDivider />
-                    <CDropdownItem href="#">Something else here</CDropdownItem>
+                    <CDropdownItem href="">Something else here</CDropdownItem>
                   </CDropdownMenu>
                 </CDropdown>
                 <CNavItem className='flex items-center font-bold'>
-                  <CNavLink href="#">About Us</CNavLink>
+                  <CNavLink href="">About Us</CNavLink>
+                </CNavItem>
+                <CNavItem className={`flex items-center font-bold ${auth?"block":"hidden"}`}>
+                  <CNavLink ><Link className='text-slate-600  no-underline ' to={"/dashboard"}>DashBoard</Link></CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="#" ><button className='bg-custom-green px-4 py-2 font-bold text-white' >LOGIN</button></CNavLink>
+                  <CNavLink to='/login' ><button className='bg-custom-green px-4 py-2 font-bold text-white'
+                  onClick={()=>{
+                    if(auth){
+                      localStorage.removeItem("authorization")
+                      setAuth(false)
+                    }else{
+                      navigate("/login")
+                    }
+                  }}
+                  >{auth?"LOGOUT":"LOGIN"}</button></CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="#" ><button className='border-solid border-2 border-custom-pink px-4 py-2 font-bold text-custom-pink' >REGISTER</button></CNavLink>
+                  <CNavLink href="" ><button className='border-solid border-2 border-custom-pink px-4 py-2 font-bold text-custom-pink'
+                   onClick={()=>{
+                    navigate("/register")
+                  }}
+                  >REGISTER</button></CNavLink>
                 </CNavItem>
               </CNavbarNav>
             </CCollapse>
