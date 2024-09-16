@@ -28,5 +28,20 @@ suscribeService.add = async(email)=>{
         }
     }
 }
-
+suscribeService.getAllsuscribe = async()=>{
+    try{
+        let result = await Suscribe.find()
+        return ({
+            status:"ok",
+            msg:"fonded suscriber",
+            data:result
+        })
+    }catch(err){
+        return ({
+        status:"err",
+        msg:"backend error to get cards",
+        data:[]
+    })
+    }
+}
 module.exports = suscribeService

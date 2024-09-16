@@ -21,4 +21,8 @@ SuscribeController.suscribe = async (req, res) => {
 
 
 }
+SuscribeController.getAllsuscribe = async(req,res)=>{
+    let result =  await SuscribeService.getAllsuscribe()
+   res.send(result)
+}
 module.exports = SuscribeController

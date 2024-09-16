@@ -42,6 +42,9 @@ const DashboardNavbar = () => {
                 <CNavItem className='flex items-center font-bold'>
                   <CNavLink
                   className='cursor-pointer'
+                  onClick={()=>{
+                    navigate("/allsuscribe")
+                  }}
                   >See All Subscribe</CNavLink>
                 </CNavItem>
                 <CNavItem className='flex items-center font-bold'>

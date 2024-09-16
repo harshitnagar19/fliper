@@ -10,6 +10,7 @@ import Register from "./components/register/Register";
 import Footer from "./components/footer/Footer"
 import Dashboard from "./components/dashboard/Dashboard"; 
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+import AllSubscribe from "./components/allsubscribe/AllSubscribe";
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<div> <Login /></div>} />
         <Route path="/register" element={<div> <Register /></div>} />
         <Route path="/dashboard" element={<div> <Dashboard /></div>} />
+        <Route path="/allsuscribe" element={<div> <AllSubscribe /></div>} />
       </Routes>
     </BrowserRouter>
   );
