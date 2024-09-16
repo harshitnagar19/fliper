@@ -1,20 +1,21 @@
-import React ,{useEffect}from 'react'
+import React ,{useEffect,useState}from 'react'
 import { Helpinghand } from '../helpiinghand/Helpinghand'
 import card1 from "../../assest/landingImages/card1.svg"
-
+import axios from 'axios'
 
 const Cards = () => {
-    let arr = [
-        {src:"card1.svg"},
-        {src:"card2.svg"},
-        {src:"card3.svg"},
-        {src:"card4.svg"},
-        {src:"card5.svg"},
-        {src:"card6.svg"},
-    ]
+    const base_url = process.env.REACT_APP_BASE_URL 
+    const [cards , setCards] =useState([])
+    
 
     useEffect(()=>{
+        axios.post(`${base_url}/card/getcards`).then((data)=>{
+            if(data.data.status=="ok"){
+                setCards(data.data.data)
+            }
+        }).catch((err)=>{
 
+        })
     },[])
     return (
         <div className='my-16'>
@@ -26,8 +27,8 @@ const Cards = () => {
                 <p className='text-slate-500'>number of industry categories.</p>
             </div>
             <div className='container flex flex-wrap gap-6 gap-y-12 justify-center'>
-                {arr.map((el)=>{
-                    return <Helpinghand src={`${el.src}`}/>
+                {cards.map((el)=>{
+                    return <Helpinghand el={el}/>
                 })}
             </div>
             <div className='text-center mt-16'>

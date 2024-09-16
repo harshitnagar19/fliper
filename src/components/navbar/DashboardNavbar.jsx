@@ -55,6 +55,7 @@ const DashboardNavbar = () => {
                     if(auth){
                       localStorage.removeItem("authorization")
                       setAuth(false)
+                      navigate("/")
                     }else{
                       navigate("/login")
                     }

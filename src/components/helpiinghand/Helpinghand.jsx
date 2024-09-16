@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
 
-export const Helpinghand = ({src}) => {
+export const Helpinghand = ({el}) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     // this div is of card
     <div>
-        <div className="max-w-xs rounded overflow-hidden shadow-lg  h-[450px]"
+        <div className="max-w-xs rounded overflow-hidden shadow-lg  h-[380px]"
          onMouseEnter={() => setIsHovered(true)} 
          onMouseLeave={() => setIsHovered(false)} 
         >
@@ -13,21 +13,23 @@ export const Helpinghand = ({src}) => {
       <div className={isHovered?"relative transition-transform duration-500 ease-in-out -translate-y-52":"relative transition-transform duration-500 ease-in-out duration-500 ease-in-out translate-y-0"}>
         <img
           className="w-full h-48 object-cover ga"
-          src={require(`../../assest/landingImages/${src}`)}
+          src={el.image}
           alt={"card"}
         />
         <div className="absolute top-4 left-4 flex space-x-2">
-          <span className="bg-gray-900 text-white px-2 py-1 text-xs font-semibold uppercase rounded">House</span>
-          <span className="bg-gray-900 text-white px-2 py-1 text-xs font-semibold uppercase rounded">Family Business</span>
+         {el.tag.map((ele)=>{
+          return <span className="bg-gray-900 text-white px-2 py-1 text-xs font-semibold uppercase rounded">{ele}</span>
+         })} 
+         
         </div>
       </div>
 
       {/* Content section */}
       <div className={isHovered?"px-6 py-4 transition-transform duration-500 ease-in-out -translate-y-52":"px-6 py-4 transition-transform duration-500 ease-in-out translate-y-0"}>
-        <div className="font-bold text-xl mb-2">Oxalis</div>
-        <p className="text-gray-600 text-sm mb-4">Brooklyn, NY</p>
+        <div className="font-bold text-xl mb-2">{el.title}</div>
+        <p className="text-gray-600 text-sm mb-4">{el.location}</p>
         <p className="text-gray-700 text-base mb-4">
-          A recognized leader in language immersion & early education, opening second school.
+          {el.descripction}
         </p>
 
         {/* Progress bar */}
@@ -38,7 +40,7 @@ export const Helpinghand = ({src}) => {
 
         {/* Funding details */}
         <div className="mt-2 text-gray-800 font-bold">
-          $574,920 <span className="font-normal text-gray-600">raised of $1,000,000</span>
+          ${el.getprice} <span className="font-normal text-gray-600">raised of ${el.totalprice}</span>
         </div>
       </div>
 
@@ -46,13 +48,13 @@ export const Helpinghand = ({src}) => {
       <div className={isHovered?"  transition-transform duration-500 ease-in-out -translate-y-52":" transition-transform duration-500 ease-in-out translate-y-0"}>
         <div className="py-6 px-3 grid grid-cols-2 gap-1 text-sm text-gray-700 mb-4">
           <div>Security Type</div>
-          <div className="font-semibold">Revenue Sharing Note</div>
+          <div className="font-semibold">{el.securitytype}</div>
           <div>Investment Multiple</div>
-          <div className="font-semibold">1.4x</div>
+          <div className="font-semibold">{el.investmentmultiple}x</div>
           <div>Maturity</div>
-          <div className="font-semibold">48 Months</div>
+          <div className="font-semibold">{el.maturity}Months</div>
           <div>Min. Investment</div>
-          <div className="font-semibold">$100</div>
+          <div className="font-semibold">${el.mininvestment}</div>
         </div>
         <button className="w-full pb-10 pt-1 bg-custom-pink text-white font-semibold ">
           VIEW

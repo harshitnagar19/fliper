@@ -22,7 +22,7 @@ cardService.add = async(addedBy, tag, image, title, location, description, total
     }
 }
 
-cardServices.getcards = async()=>{
+cardService.getcards = async()=>{
     try{
         let result = await Cards.find()
         return ({
