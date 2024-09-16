@@ -21,4 +21,21 @@ cardService.add = async(addedBy, tag, image, title, location, description, total
         })
     }
 }
+
+cardServices.getcards = async()=>{
+    try{
+        let result = await Cards.find()
+        return ({
+            status:"ok",
+            msg:"fonded cards",
+            data:result
+        })
+    }catch(err){
+        return ({
+        status:"err",
+        msg:"backend error to get cards",
+        data:[]
+    })
+    }
+}
 module.exports  = cardService
