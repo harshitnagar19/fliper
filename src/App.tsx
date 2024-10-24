@@ -11,7 +11,7 @@ import Footer from "./components/footer/Footer"
 import Dashboard from "./components/dashboard/Dashboard"; 
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import AllSubscribe from "./components/allsubscribe/AllSubscribe";
-function App() {
+function App(){
   return (
     <BrowserRouter>
       <Routes>

@@ -1,17 +1,17 @@
 import React ,{useState,useEffect} from 'react'
 import {CNavbar ,CContainer,CNavbarBrand,CNavbarToggler,CCollapse,CNavbarNav,CNavItem,CNavLink,CDropdown,CDropdownMenu,CDropdownItem,CDropdownDivider,CDropdownToggle} from '@coreui/react';
-import '@coreui/coreui/dist/css/coreui.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import '@coreui/coreui/dist/css/coreui.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assest/landingImages/logo.svg"
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-const DashboardNavbar = () => {
+const DashboardNavbar:React.FC = () => {
     const [visible, setVisible] = useState(false)
     const [auth , setAuth] = useState(false)
     var navigate = useNavigate();
-    const notifyE = (mes) => toast.error(mes);
-    const notifyS = (mes) => toast(mes);
+    const notifyE = (mes:any) => toast.error(mes);
+    const notifyS = (mes:any) => toast(mes);
 
      useEffect(()=>{
       var authorization = localStorage.getItem("authorization")

@@ -7,12 +7,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 const Dashboard = () => {
   var navigate = useNavigate();
-  const [formData, setFormData] = useState(null);
+  const [formData, setFormData] = useState<null|any>(null);
   const [auth, setAuth] = useState("")
   const base_url = process.env.REACT_APP_BASE_URL 
 
-  const notifyS = (mes) => toast(mes);
-  const notifyE = (mes) => toast.error(mes);
+  const notifyS = (mes:any) => toast(mes);
+  const notifyE = (mess:any) => toast.error(mess);
 
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Dashboard = () => {
           notifyE(result.data.msg)
         }
       }
-      catch(err){
+      catch(err:any){
         notifyE(err.data.msg)
       
       }

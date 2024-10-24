@@ -29,7 +29,7 @@ const AllSubscribe = () => {
       </h1>
 
       <ul className="space-y-4">
-        {suscribe.map((subscriber, index) => (
+        {suscribe.map((subscriber:any, index) => (
           <li key={index} className="p-4 bg-gray-100 rounded-md shadow-md hover:bg-blue-100 transition duration-200">
             <p className="text-blue-600 font-medium text-lg">{subscriber.email}</p>
           </li>

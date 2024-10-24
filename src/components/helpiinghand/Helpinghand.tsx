@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export const Helpinghand = ({el}) => {
+export const Helpinghand:React.FC<any> = ({el}) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     // this div is of card
@@ -17,7 +17,7 @@ export const Helpinghand = ({el}) => {
           alt={"card"}
         />
         <div className="absolute top-4 left-4 flex space-x-2">
-         {el.tag.map((ele)=>{
+         {el.tag.map((ele:any)=>{
           return <span className="bg-gray-900 text-white px-2 py-1 text-xs font-semibold uppercase rounded">{ele}</span>
          })} 
          

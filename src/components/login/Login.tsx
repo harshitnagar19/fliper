@@ -24,7 +24,7 @@ const Login = () => {
         email: string().trim().matches(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/, "email should be correct").required("email is required field"),
         password: string().required("password is required field")
     })
-    const notify = (mes) => toast.error(mes);
+    const notify = (mes:any) => toast.error(mes);
     const sumbitLoginHandle = async () => {
         try {
             await loginSchema.validate({ email, password })
@@ -41,7 +41,7 @@ const Login = () => {
                 notify(err.message)
                 console.log(err)
             })
-        } catch (err) {
+        } catch (err:any) {
             notify(err.message)
 
         }
@@ -70,7 +70,7 @@ const Login = () => {
                         onChange={(e) => { setPassword(e.target.value) }}
                     ></input>
                     <div className='showPass'><input type="checkbox" onChange={(e) => { e.target.checked == true ? setShowHidePass("text") : setShowHidePass("password") }} /><label> show password</label></div>
-                    <div className="forget-password"><Link >~Forget Password </Link></div>
+                    <div className="forget-password"><Link to={""} >~Forget Password </Link></div>
                     <div className="form--marketing">
                         <label htmlFor="okayToEmail" className="checkbox text-sm">
                             Create a new account -

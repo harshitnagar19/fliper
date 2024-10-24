@@ -13,8 +13,8 @@ const Footer = () => {
     const [suscribe, setSuscribe] = useState("");
     const baseUrl = process.env.REACT_APP_BASE_URL
 
-    const notifySucess = (notifyMessage) => toast(notifyMessage);
-    const notifyError = (notifyMessage) => toast.error(notifyMessage);
+    const notifySucess = (notifyMessage:string) => toast(notifyMessage);
+    const notifyError = (notifyMessage:string) => toast.error(notifyMessage);
 
 
     return (
@@ -85,7 +85,7 @@ const Footer = () => {
                                     }else{
                                         notifyError(response.data.data[0])
                                     }
-                                }catch(err){
+                                }catch(err:any){
                                     notifyError(err.message)
                                 }finally{
                                     setSuscribe("")

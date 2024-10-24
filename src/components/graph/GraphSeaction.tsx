@@ -13,7 +13,7 @@ const GraphSeaction = () => {
                     <div className='ml-6 mb-7 md:mb-0 md:ml-[12.5rem] md:mr-10   w-full md:w-[31.3%]'>
                         <div className='pb-6'><img src={subtract} alt="" /></div>
                        <Fade direction="up" duration={3000}> <div><h1 className='font-bold text-3xl mb-6'>$7M+ paid out to investors</h1></div></Fade>
-                       <div><Fade direction="up" deay={1000}duration={3000}> <p className='mb-0 text-sm text-slate-500 font-semibold'>Next invest has already paid out over $7M in cash returns to investors. Earn potential cash payments through unique revenue-share and debit financing investments.</p></Fade></div>
+                       <div><Fade direction="up" delay={1000}duration={3000}> <p className='mb-0 text-sm text-slate-500 font-semibold'>Next invest has already paid out over $7M in cash returns to investors. Earn potential cash payments through unique revenue-share and debit financing investments.</p></Fade></div>
                     </div>
                     <div >
                         <img className='h-60' src={graph} alt="" />
