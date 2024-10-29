@@ -1,18 +1,41 @@
-import React ,{useEffect,useState}from 'react'
+import React ,{ReactNode, useEffect,useState}from 'react'
 import { Helpinghand } from '../helpiinghand/Helpinghand'
 import card1 from "../../assest/landingImages/card1.svg"
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { Fade } from 'react-awesome-reveal'
 
+export type cardType =  {
+    _id:string;
+    addedBy:string;
+    descripction:string;
+    getprice:number;
+    image:string;
+    investmentmultiple:string;
+    location:string;
+    maturity:string;
+    mininvestment:number;
+    securitytype:string;
+    tag: [];
+    title:string;
+    totalprice: number;
+  }
+type ApiResponse = {
+    status:string;
+    msg:string;
+    data:cardType[];
+}
+
+
 const Cards = () => {
-    const base_url = process.env.REACT_APP_BASE_URL 
-    const [cards , setCards] =useState([])
+    const base_url:string = process.env.REACT_APP_BASE_URL || ""
+    const [cards , setCards] =useState<cardType[]>([])
     
 
     useEffect(()=>{
-        axios.post(`${base_url}/card/getcards`).then((data)=>{
-            if(data.data.status=="ok"){
-                setCards(data.data.data)
+        axios.post(`${base_url}/card/getcards`).then((res:AxiosResponse<ApiResponse>)=>{
+            // console.log(res.data.data)
+            if(res.data.status=="ok"){
+                setCards(res.data.data)
             }
         }).catch((err)=>{
 
@@ -28,8 +51,8 @@ const Cards = () => {
                 <p className='text-slate-500'>number of industry categories.</p>
             </div>
             <div className='container flex flex-wrap gap-6 gap-y-12 justify-center'>
-                {cards.map((el)=>{
-                    return <Helpinghand el={el}/>
+                {cards.map((el:cardType):ReactNode=>{
+                    return <Helpinghand el={el} />
                 })}
             </div>
             <div className='text-center mt-16'>

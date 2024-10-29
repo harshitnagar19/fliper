@@ -1,20 +1,20 @@
 import React ,{useState,useEffect} from 'react'
 import {CNavbar ,CContainer,CNavbarBrand,CNavbarToggler,CCollapse,CNavbarNav,CNavItem,CNavLink,CDropdown,CDropdownMenu,CDropdownItem,CDropdownDivider,CDropdownToggle} from '@coreui/react';
-// import '@coreui/coreui/dist/css/coreui.min.css';
-// import 'bootstrap/dist/css/bootstrap.min.css'
-import { Link, useNavigate } from 'react-router-dom';
-import logo from "../../assest/landingImages/logo.svg"
-import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
+import '@coreui/coreui/dist/css/coreui.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
+import logo from "../../assest/landingImages/logo.svg";
+import { toast } from 'react-toastify';
+
 const DashboardNavbar:React.FC = () => {
-    const [visible, setVisible] = useState(false)
-    const [auth , setAuth] = useState(false)
-    var navigate = useNavigate();
-    const notifyE = (mes:any) => toast.error(mes);
-    const notifyS = (mes:any) => toast(mes);
+    const [visible, setVisible] = useState<boolean>(false)
+    const [auth , setAuth] = useState<boolean>(false)
+    var navigate:NavigateFunction = useNavigate();
+    // const notifyE = (mes:any) => toast.error(mes);
+    // const notifyS = (mes:any) => toast(mes);
 
      useEffect(()=>{
-      var authorization = localStorage.getItem("authorization")
+      var authorization:null|string = localStorage.getItem("authorization")
       if(authorization) setAuth(true)
       else setAuth(false)
      },[auth])

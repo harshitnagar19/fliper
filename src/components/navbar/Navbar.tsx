@@ -5,12 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assest/landingImages/logo.svg"
 const Navbar: React.FC = () => {
-  const [visible, setVisible] = useState(false)
-  const [auth, setAuth] = useState(false)
+  const [visible, setVisible] = useState<boolean>(false)
+  const [auth, setAuth] = useState<boolean>(false)
   var navigate = useNavigate();
 
   useEffect(() => {
-    var authorization = localStorage.getItem("authorization")
+    var authorization:string|null = localStorage.getItem("authorization")
     if (authorization) setAuth(true)
     else setAuth(false)
   }, [auth])
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
               </CNavItem>
               <CNavItem>
                 <CNavLink to='/login' ><button className='bg-custom-green px-4 py-2 font-bold text-white'
-                  onClick={() => {
+                  onClick={():void => {
                     if (auth) {
                       localStorage.removeItem("authorization")
                       setAuth(false)
